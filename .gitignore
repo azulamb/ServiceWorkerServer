@@ -1,0 +1,4 @@
+docs/_categories
+node_modules/
+tmp/
+*.sublime-workspace

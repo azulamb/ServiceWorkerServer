@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja" style="font-size:30px;">
+<head>
+<meta charset="utf-8">
+<!--<meta name="viewport" content="width=320, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">-->
+<link rel="manifest" href="./manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="icon" href="./favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="shortcut icon" href="./favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-precomposed.png">
+<title>ServiceWorkerServer</title>
+<script src="./app.js"></script>
+<script>
+</script>
+<style type="text/css">
+:root {
+	--back-color: white;
+	--backColorAlpha: rgba( 255, 255, 255, 0.8 );
+	--frontColor: black;
+}
+</style>
+<style type="text/css">
+html { margin: 0; padding: 0; height: 100%; }
+body { margin: 0; padding: 0; height: 100%; color: var( --frontColor, black ); }
+#area { width: 100%; height: 100%; position: relative; overflow: hidden; }
+#area > .block { display: block; position: absolute; transition: top 0.3s ease-in; }
+@media all and (orientation: landscape) { .main { width: 100vmin; height: 100%; } }
+@media all and (orientation: portrait) { .main { width: 100%; height: 100vmin; } }
+.main { position: absolute; margin: auto; top: 0; bottom: 0; left: 0; right: 0; }
+#legacy { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba( 0, 0, 0, 0.2 ); }
+#legacy.hide { display: none; }
+#legacy > div { display: none; }
+#legacy.view > div { display: block; position: absolute; margin: auto; top: 0; bottom: 0; left: 0; right: 0; text-align: center;  width: 16rem; height: 4rem; padding: 0.5rem; border-radius: 0.5rem; background-color: rgba( 0, 0, 0, 0.8 ); color: #ffffff; }
+#legacy.view > div h3 { margin: 0; }
+#legacy.view > div p { margin: 0; }
+article { width: 30rem; margin: auto; }
+.logo { display: block; margin: auto; }
+.edit { text-align: right; display: none; }
+.edit button:before { content: 'Edit'; }
+.logined .edit { display: block; }
+.login { display: block; }
+.logined .login { display: none; }
+body:not(.logined) .logined { display: none; }
+dialog { position: fixed; height: 80%; min-width: 60%; border: 0; background: transparent; padding: 0; top: 10%; }
+dialog > * { box-sizing: border-box; }
+dialog > h3 { position: absolute; top: 0; left: 0; width: 100%; margin: 0; padding: 1rem 0.5rem 0.5rem; border-radius: 0.5rem; background-color: var( --backColor ); }
+dialog > div { padding: 3rem 1rem 1rem; max-height: 100%; margin: auto; overflow: auto; border-radius: 0.5rem; background-color: var( --backColorAlpha ); }
+dialog > div label { display: block; }
+input, button { font-size: 1rem; }
+dialog > div input[type="text"] { display: block; width: 100%; }
+dialog > button { position: absolute; top: 0.5rem; right: 0.5rem; width: 2rem; height: 2rem; overflow: hidden; border-radius: 50%; }
+dialog > button:before { content: '×'; }
+.cancel:before { content: 'Cancel'; }
+/*width:fit-content*/
+#post_registration:before { content: 'Registration'; }
+#post_leave:before { content: 'Leave'; }
+</style>
+</head>
+<body>
+	<article>
+		<img src="./icon.svg" class="logo">
+		<div class="login">
+			<h3>Login</h3>
+			<p><label>Name</label><input type="text" id="login_name"></p>
+			<button id="post_registration"></button>
+		</div>
+		<div class="logined">
+			<h2>Hi <span id="name"></span></h2>
+			<div class="edit"><button id="edit_userdata"></button></div>
+			<button id="post_leave"></button>
+			<button id="updsw">refresh</button>
+		</div>
+	</article>
+	<dialog id="dialog_userdata">
+		<h3>Edit User</h3>
+		<div>
+			<p><label>Name</label><input type="text" id="userdata_name"></p>
+			<button class="cancel" id="cancel_userdata"></button>
+		</div>
+	</dialog>
+	<div id="legacy"><div><h3>This browser is legacy.</h3><p>Please use <a href="https://www.google.co.jp/chrome/">modern browser</a>.</p></div></div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"outFile": "../../docs/sw.js",
+		"module": "system",
+		"target": "es6",
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"removeComments": true,
+		"preserveConstEnums": false,
+		"lib": [ "webworker", "es2017" ],
+		"sourceMap": false
+	},
+	"include": [
+		"./**/*.ts"
+	]
+}

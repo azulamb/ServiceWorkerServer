@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"outFile": "../../docs/app.js",
+		"module": "system",
+		"target": "es6",
+		"moduleResolution": "node",
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"removeComments": true,
+		"preserveConstEnums": false,
+		"sourceMap": false
+	},
+	"include": [
+		"./**/*.ts"
+	]
+}
