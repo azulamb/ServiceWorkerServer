@@ -54,7 +54,7 @@ class App {
         }
         clearTimeout(errtimer);
         noLegacy();
-        navigator.serviceWorker.register('./sw.js');
+        navigator.serviceWorker.register('./sw.js',{scope:'./'});
         return navigator.serviceWorker.ready.then((registration) => {
             if (!registration.active) {
                 throw 'ServiceWorker not active.';
